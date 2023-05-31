@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Registration',
-        'USER': 'root',
+        'NAME': 'Namelist',
+        'USER': 'vijayvijay',
         'PASSWORD': 'Randompass@123',
-        'HOST': 'localhost',
+        'HOST': 'vijayvijay.mysql.pythonanywhere-services.com',
         'PORT': '3306',
     }
 }
