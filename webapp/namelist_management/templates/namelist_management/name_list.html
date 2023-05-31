@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Name List</h2>
+
+  <ul>
+    {% for name in object_list %}
+      <li>{{ name.name }}</li>
+      <ul>
+        <li>Phone: {{ name.phone_number }}</li>
+        <li>LinkedIn: <a href="{{ name.linkedin_url }}">{{ name.linkedin_url }}</a></li>
+        <li><a href="{% url 'name_edit' name.pk %}">Edit</a></li>
+        <li><a href="{% url 'name_delete' name.pk %}">Delete</a></li>
+      </ul>
+    {% empty %}
+      <li>No names found.</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'name_new' %}">Add New Name</a>
+{% endblock %}

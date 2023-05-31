@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2 class="display-4 text-center">Name List</h2>
+
+  <div class="name-list">
+    {% for name in object_list %}
+      <div class="name-item card">
+        <div class="card-body">
+          <h3 class="card-title">{{ name.name }}</h3>
+          <ul class="list-unstyled">
+            <li>Phone: {{ name.phone_number }}</li>
+            <li>LinkedIn: <a href="{{ name.linkedin_url }}">{{ name.linkedin_url }}</a></li>
+            <li>
+              <div class="btn-group">
+                <a class="custom-btn custom-btn-edit" href="{% url 'name_edit' name.pk %}">Edit</a>
+                <a class="custom-btn custom-btn-delete" href="{% url 'name_delete' name.pk %}">Delete</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-muted">No names found.</p>
+    {% endfor %}
+  </div>
+
+  <a class="custom-btn custom-btn-add" href="{% url 'name_new' %}">Add New Name</a>
+{% endblock %}
+
+<style>
+  .custom-btn.custom-btn-edit {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .custom-btn.custom-btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+    border-color: #dc3545;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .custom-btn.custom-btn-add {
+    background-color: #98ff98; /* Light mint green */
+    color: #fff;
+    border-color: #98ff98;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+</style>
